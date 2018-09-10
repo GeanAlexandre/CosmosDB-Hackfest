@@ -15,14 +15,10 @@ namespace Demo.App
             var productReposiry = Setup();
             //Seed.CreateDatabase(productReposiry);
             ReadAllDataFromDatbase(productReposiry);
-
-            Console.ReadKey();
-
         }
 
         static void ReadAllDataFromDatbase(IProductRepository productRepository)
         {
-
             Enumerable.Range(1, 100)
                 .ToList()
                 .ForEach(productId =>
