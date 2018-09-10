@@ -22,17 +22,17 @@ namespace Demo.App
 
         static void ReadAllDataFromDatbase(IProductRepository productRepository)
         {
-            Stopwatch sw = new Stopwatch();
 
             Enumerable.Range(1, 100)
                 .ToList()
                 .ForEach(productId =>
                 {
+                    var sw = new Stopwatch();
                     sw.Start();
                     var product = productRepository.GetByIdAsync(productId).GetAwaiter().GetResult();
-                    Console.WriteLine("Latency={0}", sw.Elapsed);
-                    Console.WriteLine(product);
                     sw.Stop();
+                    Console.WriteLine($"Latency {sw.ElapsedMilliseconds} Milliseconds");
+                    Console.WriteLine(product);
                 });
 
         }

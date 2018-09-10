@@ -12,7 +12,8 @@ namespace Demo.App.Repositories
         {
             _collection = new MongoClient(settings.ConnectionString)
                 .GetDatabase("DallasHackfest")
-                .GetCollection<Product>(nameof(Product));
+                .GetCollection<Product>(nameof(Product))
+                .WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
         }
 
         public async Task AddNewAsync(Product product)
